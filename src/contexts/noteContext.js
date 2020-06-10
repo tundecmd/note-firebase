@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useReducer } from 'react';
 import NewNoteForm from '../new-note-form';
 import { noteReducer } from '../reducers/noteReducer';
-import { auth } from '../firebase/firebase';
+import { auth, createUserProfileDocument } from '../firebase/firebase';
 
 export const NoteContext = createContext();
 
@@ -25,8 +25,9 @@ const NoteContextProvider = (props) => {
     }, [notes]);
 
     useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            setCurrentUser(currentUser => user);
+        auth.onAuthStateChanged(async user => {
+            // setCurrentUser(currentUser => user);
+            createUserProfileDocument(user)
             console.log(user);
         });
     })
