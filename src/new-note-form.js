@@ -23,22 +23,7 @@ const NewNoteForm = () => {
         setEditItem(false);
   
     }
-    // const HandleEdit = e => {
-    //     e.preventDefault();
-
-    //     // addNote(title, content);
-    //     dispatch({type: 'EDIT_NOTE', note: {
-    //         title, content
-    //     }})
-
-    //     alert('note successfully edited');
         
-    //     setTitle('');
-    //     setContent('');
-    //     setEditItem(false);
-    // }
-
-    
     return (<form onSubmit={!editItem ? HandleAdd : HandleEdit} style={{marginTop: '100px'}}>
             <div className="form-group">
                 <input 

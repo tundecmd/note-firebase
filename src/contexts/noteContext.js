@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useReducer } from 'react';
 import NewNoteForm from '../new-note-form';
 import { noteReducer } from '../reducers/noteReducer';
+import { auth } from '../firebase/firebase';
 
 export const NoteContext = createContext();
 
@@ -12,6 +13,8 @@ const NoteContextProvider = (props) => {
     const [content, setContent] = useState('');
     const [editItem, setEditItem] = useState(false);
 
+    const [currentUser, setCurrentUser] = useState(null);
+
     const [ notes, dispatch ] = useReducer(noteReducer, [], () => {
         const localData = localStorage.getItem('notes');
         return localData ? JSON.parse(localData) : []
@@ -20,6 +23,14 @@ const NoteContextProvider = (props) => {
     useEffect(() => {
         localStorage.setItem('notes', JSON.stringify(notes))
     }, [notes]);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            setCurrentUser(currentUser => user);
+            console.log(user);
+        });
+    })
+    
 
     const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(searchNote.toLowerCase()))
 
@@ -52,7 +63,7 @@ const NoteContextProvider = (props) => {
         setEditItem(false);
     }
     return (
-        <NoteContext.Provider value={{ notes, displayEdit, HandleEdit,  dispatch, filteredNotes, setSearchNote, title, content, editItem, setEditItem, setTitle, setContent }}>
+        <NoteContext.Provider value={{ notes, displayEdit, HandleEdit,  dispatch, filteredNotes, setSearchNote, title, content, editItem, setEditItem, setTitle, setContent, currentUser }}>
             {props.children}
         </NoteContext.Provider>
     )

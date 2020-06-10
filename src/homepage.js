@@ -4,11 +4,10 @@ import NoteList from './NoteList';
 import NoteContextProvider from './contexts/noteContext';
 import { Route, Switch } from 'react-router-dom';
 import NewNoteForm from './new-note-form';
-import NoteDetail from './NoteDetail';
+import SignIn from './sign-in/sign-in';
 
 
 const HomePage = () => {
-     
     return (
         <div className='container'>
             <NoteContextProvider>
@@ -16,7 +15,7 @@ const HomePage = () => {
                 <Switch>
                     <Route exact path='/' component = { NoteList } />
                     <Route path='/create' component = { NewNoteForm } />
-                    <Route path='/:id' component = { NoteDetail } />
+                    <Route path='/signin' component = { SignIn } />
                 </Switch>
             </NoteContextProvider>
         </div>

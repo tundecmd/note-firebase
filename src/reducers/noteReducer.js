@@ -13,17 +13,8 @@ export const noteReducer = (state, action) => {
         case 'DISPLAY_NOTE':
             return state.filter(note => note.id !== action.id);
         case 'EDIT_NOTE':
-            return {
-                ...state
-            }
+            return state.filter(note => note.id !== action.id);
         default:
             return state;
     }
 }
-
-
-// [...state, {
-//     title: action.note.title,
-//     content: action.note.content,
-//     id: Math.random()
-// }]

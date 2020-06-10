@@ -11,7 +11,7 @@ const displayArray = [
     },
     {
         id: 3,
-        word: "Let's face it, getting a handy note is hack, that's why we wrote one"
+        word: "Let's face it, getting a handy note is a hack, that's why we wrote one"
     },
     {
         id: 4,
@@ -23,7 +23,7 @@ const displayArray = [
     },
     {
         id: 6,
-        word: "Fail BIG, Yeah. Think Outside the Browser"
+        word: "Think Outside the Browser"
     },
     {
         id: 7,
@@ -43,7 +43,7 @@ const displayArray = [
     },
     {
         id: 11,
-        word: "IF You See A Developer, My Brother, Please, Run for Your Life"
+        word: "IF You See A Developer, My Brother, Run for Your Life"
     }
 ]
 
