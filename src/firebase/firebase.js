@@ -3,24 +3,26 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 
- const config = {
-    apiKey: "AIzaSyAJhEz24H_EJvRIRXEaG1_vBfUU-dNWRZs",
-    authDomain: "notepad-2b24d.firebaseapp.com",
-    databaseURL: "https://notepad-2b24d.firebaseio.com",
-    projectId: "notepad-2b24d",
-    storageBucket: "notepad-2b24d.appspot.com",
-    messagingSenderId: "484216982870",
-    appId: "1:484216982870:web:f380269f2312ef5fb01af7"
+
+
+  // Your web app's Firebase configuration
+const config = {
+    apiKey: "AIzaSyABAqCaguH9ZjjnUMC7rdmpDDJ0zHJVGiE",
+    authDomain: "notepad-da484.firebaseapp.com",
+    databaseURL: "https://notepad-da484.firebaseio.com",
+    projectId: "notepad-da484",
+    storageBucket: "notepad-da484.appspot.com",
+    messagingSenderId: "75246082204",
+    appId: "1:75246082204:web:67bfb9b8f2beffd92fb559"
   };
-
   // Initialize Firebase
-  firebase.initializeApp(config);
 
+export const createUserProfileDocument = async (userAuth, additionalData) =>  {
+  if (!userAuth) {
+    return
+  };
+  console.log(firestore.doc('users/128fshow'))
+}
+firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-export default firebase;
